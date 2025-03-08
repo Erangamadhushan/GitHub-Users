@@ -110,21 +110,31 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${userData.location ? `<p>📍 ${userData.location}</p>` : ''}
                     ${userData.email ? `<p>✉️ ${userData.email}</p>` : ''}
                     ${userData.blog ? `<p>🔗 <a href="${userData.blog}" target="_blank">${userData.blog}</a></p>` : ''}
+                    <p>Public Repository : <span>${userData.public_repos}</span></p>
+                    ${
+                        userData.public_repos > 0 ? "Active User " : "New User"
+                    }
+                    <p>Follower : <span>${userData.followers} </span> Following : <span>${userData.following}</span></p>
                 </div>
             `;
             getUserRepoDetails();
         }
         function displayUserRepoDetails(repoDetails){
-            console.log(repoDetails)
+            // console.log(repoDetails)
             const repositoryDetails = document.querySelector("#repositoryDetails");
-            let repositoryDetailsContent = `<h2 class="text-center text-green-400 text-[1.5em] md:text-[2.2em]">Repository Details </h2>`;
+            let repositoryDetailsContent = `<h2 class="text-center py-3 text-green-400 text-[1.5em] md:text-[2.2em]">Repository Details </h2>`;
+
+            repoDetails = repoDetails.filter(({stargazers_count}) => {
+                return stargazers_count > 0;
+            });
             repoDetails.splice(0,5).forEach((repo, index) => {
                 //console.log(repo.stargazers_count);
                 repositoryDetailsContent += `
-                    <div class="w-[95%] mx-auto bg-green-100 p-3 rounded-[.5em]">
-                        <h2 class="text-green-900 text-center">${repo.name}</h2>
+                    <div class="w-[95%] mx-auto bg-green-100 p-3 rounded-[.5em] animate__animated animate__zoomIn animate__delay-${index * .5}s" >
+                        <h2 class="text-green-900 text-center text-xl font-bold">${repo.name}</h2>
                         <p>${repo.description || " No description available"}</p>
-                        <p>Forks : <span>${repo.forks}</span>  Stars : <span>${repo.stargazers_count}</span>
+                        <p>Forks : <span>${repo.forks}</span>  Stars : <span>${repo.stargazers_count}</span></p>
+                        <p>Language : <span>${repo.language}</span></p>
                     </div>
                 `
             })
