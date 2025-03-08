@@ -2,8 +2,6 @@
 
 A simple web application that allows you to search for GitHub users using the GitHub API and display their profile information.
 
-![GitHub User Search App Screenshot](https://via.placeholder.com/800x400?text=GitHub+User+Search+App)
-
 ## Features
 
 - Search for any GitHub user by username
@@ -82,8 +80,7 @@ Please note that the GitHub API has rate limiting:
 5. Open a Pull Request
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+<!--This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.-->
 
 ## Acknowledgements
 
