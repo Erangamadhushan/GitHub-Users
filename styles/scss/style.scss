@@ -1,1 +1,22 @@
 @import './base';
+
+#root {
+    width:95%;
+    max-width:1200px;
+    margin-block:2.5em;
+    border-radius:.8em;
+    margin-inline:auto;
+    box-shadow:0.2em 0.2em 0.5em rgba(0,0,0,0.2),-0.2em 0.2em 0.4em  rgba(0,0,0,0.2);
+}
+
+.explorerSection {
+    position:fixed;
+    cursor:pointer;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background-color:rgba(0,0,0,0.2);
+    bottom:200px;
+    right:20px;
+    box-shadow:2px 3px 8px rgba(0,0,0,0.2);
+}
