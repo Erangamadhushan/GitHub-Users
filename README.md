@@ -40,7 +40,7 @@ https://api.github.com/users/{username}
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/github-user-search.git
+   git clone https://github.com/Erangamadhushan/GitHub-Users.git
    ```
 
 2. Navigate to the project directory:
