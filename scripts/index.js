@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let explorerSectionContainerContent = `
             <div class="w-[300px] h-auto bg-white p-5 rounded-md shadow-md fixed right-[60px] bottom-[150px] hide">
                 <ul>
-                    <li>Item 1</li>
+                    <li class="text-green-400">Item 1</li>
                     <li>Item 2</li>
                     <li>Item 3</li>
                     <li>Item 4</li>
@@ -80,6 +80,21 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .finally (()=> {
 
+        });
+
+        fetch(`https://api.github.com/users/${githubUserName}/repos?sort=updated&per_page=10`).then (
+            response => {
+                if(!response.ok) {
+
+                }
+                response.json();
+            }
+        ).then((userRepoDetails) => {
+            displayUserRepoDetails(userRepoDetails);
+        }).catch(err => {
+            console.log(err);
+        }).finally(() => {
+            // console.log(userRepoDetails);
         })
 
 
@@ -89,8 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const profileDetailsContainer = document.querySelector('#profileDetails');
             profileDetailsContainer.innerHTML = `
                 <div class="py-5">
-                    <div>
-                        <img src="${userData.avatar_url}" alt="${userData.name}" class="w-full rounded-circle"/>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="${userData.avatar_url}" alt="${userData.name}" class="w-[80%] mx-auto rounded-xl"/>
                     </div>
                 </div>
                 <div class="grid gap-2">
@@ -103,7 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
         }
-        
+        function displayUserRepoDetails(repoDetails){
+            console.log(repoDetails);
+        }
     }
 
     
