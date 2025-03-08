@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <div class="grid md:flex gap-3">
-                <div id="profileDetails" class="w-[90%] grid gap-2 mx-auto md:w-[35%]"> </div>
-                <div id="repositoryDetails" class="w-[90%] mx-auto md:w-[55%]"> </div>
+                <div id="profileDetails" class="w-[90%] max-h-[100vh] md:max-h-[80vh] grid gap-2 mx-auto md:w-[35%]"> </div>
+                <div id="repositoryDetails" class="w-[90%] overflow-y-auto mx-auto md:w-[55%] grid gap-3"> </div>
             </div>
             <div class="loadingContainer w-full flex justify-center"><span class="loader"></span></div>
         </div>
@@ -30,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let explorerSectionContainerContent = `
             <div class="w-[300px] h-auto bg-white p-5 rounded-md shadow-md fixed right-[60px] bottom-[150px] hide">
                 <ul>
-                    <li class="text-green-400">Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
+                    <li class="text-green-400 p-2 hover:bg-green-400 hover:text-white"><a href="#">Direction 1</a></li>
+                    <li class="text-green-400 p-2 hover:bg-green-400 hover:text-white"><a href="#">Direction 2</a></li>
+                    <li class="text-green-400 p-2 hover:bg-green-400 hover:text-white"><a href="#">Direction 3</a></li>
+                    <li class="text-green-400 p-2 hover:bg-green-400 hover:text-white"><a href="#">Direction 4</a></li>
                 </ul>
             </div>
         `;
@@ -82,21 +82,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        fetch(`https://api.github.com/users/${githubUserName}/repos?sort=updated&per_page=10`).then (
-            response => {
-                if(!response.ok) {
-
-                }
-                response.json();
+        async function getUserRepoDetails() {
+            try {
+                let response = await fetch(`https://api.github.com/users/${githubUserName}/repos`);
+                let data = await response.json();
+                displayUserRepoDetails(data);
             }
-        ).then((userRepoDetails) => {
-            displayUserRepoDetails(userRepoDetails);
-        }).catch(err => {
-            console.log(err);
-        }).finally(() => {
-            // console.log(userRepoDetails);
-        })
-
+            catch(err) {
+                console.log(err);
+            }
+        }
 
         function displayUserData(userData) {
             console.log(userData);
@@ -117,15 +112,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${userData.blog ? `<p>🔗 <a href="${userData.blog}" target="_blank">${userData.blog}</a></p>` : ''}
                 </div>
             `;
+            getUserRepoDetails();
         }
         function displayUserRepoDetails(repoDetails){
-            console.log(repoDetails);
+            console.log(repoDetails)
+            const repositoryDetails = document.querySelector("#repositoryDetails");
+            let repositoryDetailsContent = `<h2 class="text-center text-green-400 text-[1.5em] md:text-[2.2em]">Repository Details </h2>`;
+            repoDetails.splice(0,5).forEach((repo, index) => {
+                //console.log(repo.stargazers_count);
+                repositoryDetailsContent += `
+                    <div class="w-[95%] mx-auto bg-green-100 p-3 rounded-[.5em]">
+                        <h2 class="text-green-900 text-center">${repo.name}</h2>
+                        <p>${repo.description || " No description available"}</p>
+                        <p>Forks : <span>${repo.forks}</span>  Stars : <span>${repo.stargazers_count}</span>
+                    </div>
+                `
+            })
+            
+            repositoryDetails.innerHTML = repositoryDetailsContent;
         }
     }
 
-    
-    
 });
-
-
-
