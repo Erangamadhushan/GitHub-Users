@@ -8,19 +8,81 @@
   width: 95%;
   max-width: 1200px;
   margin-block: 2.5em;
-  border-radius: 0.8em;
+  border-radius: 0.5em;
   margin-inline: auto;
   box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.2), -0.2em 0.2em 0.4em rgba(0, 0, 0, 0.2);
 }
 
 .explorerSection {
   position: fixed;
+  overflow: hidden;
   cursor: pointer;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.2);
   bottom: 200px;
-  right: 20px;
-  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.2);
+  right: 15px;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.2), -2px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.explorerSectionContainer {
+  display: none;
+  transition: all 0.6s ease-in 0.2s;
+}
+.explorerSectionContainer.active {
+  display: block;
+  transition: all 0.3s ease-in;
+}
+
+.loadingContainer .loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  border: 3px solid;
+  border-color: #FFF #FFF transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loadingContainer .loader::after,
+.loadingContainer .loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #FF3D00 #FF3D00;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+.loadingContainer .loader::before {
+  width: 32px;
+  height: 32px;
+  border-color: #FFF #FFF transparent transparent;
+  animation: rotation 1.5s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }/*# sourceMappingURL=style.css.map */
