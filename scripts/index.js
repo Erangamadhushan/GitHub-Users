@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div id="profileDetails" class="w-[90%] max-h-[100vh] md:max-h-[80vh] grid gap-2 mx-auto md:w-[35%]"> </div>
                 <div id="repositoryDetails" class="w-[90%] overflow-y-auto mx-auto md:w-[55%] grid gap-3"> </div>
             </div>
-            <div class="loadingContainer w-full flex justify-center"><span class="loader"></span></div>
         </div>
     `;
 
