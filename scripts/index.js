@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <img src="${userData.avatar_url}" alt="${userData.name}" class="w-[80%] mx-auto rounded-xl"/>
                     </div>
                 </div>
-                <div class="grid gap-2">
+                <div class="grid gap-2 py-3">
                     <h2 class="text-center text-green-400 text-xl">${userData.name || userData.login}</h2>
                     <p><a href="${userData.html_url}" target="_blank">@${userData.login}</a></p>
                     ${userData.bio ? `<p>${userData.bio}</p>` : ''}
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             repoDetails.splice(0,5).forEach((repo, index) => {
                 //console.log(repo.stargazers_count);
                 repositoryDetailsContent += `
-                    <div class="w-[95%] mx-auto bg-green-100 p-3 rounded-[.5em] animate__animated animate__zoomIn animate__delay-${index * .5}s" >
+                    <div class="w-[95%] mx-auto bg-green-100 p-3 rounded-[.5em] mb-3 animate__animated animate__zoomIn animate__delay-${index * .2}s" >
                         <h2 class="text-green-900 text-center text-xl font-bold">${repo.name}</h2>
                         <p>${repo.description || " No description available"}</p>
                         <p>Forks : <span>${repo.forks}</span>  Stars : <span>${repo.stargazers_count}</span></p>
