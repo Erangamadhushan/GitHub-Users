@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#root");
     let layout = `
-        <div class="grid gap-2">
+        <div class="grid gap-2 bg-gray-900">
             <div class="explorerSection"><img src="./assets/icons/add.gif"></div>
             <div class="explorerSectionContainer"></div>
-            <div class="p-5">
+            <div class="flex justify-center gap-5 items-baseline p-5">
+                <a href="" target="_blank" class="text-green-400 text-[1.5em] md:text-[3em]"><img src="./assets/icons/github.png" alt="GitHub Logo" class="w-[50px] h-[50px] mx-auto"/></a>
                 <h3 class="text-center text-green-400 text-bold text-[1.5em] md:text-[3em]">GitHub User Finder</h3>
             </div>
             <div class="grid md:flex gap-3">
@@ -27,12 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderExplorerSectionContainerDetails() {
         const explorerSectionContainer = document.querySelector(".explorerSectionContainer");
         let explorerSectionContainerContent = `
-            <div class="w-[300px] h-auto bg-white p-5 rounded-md shadow-md fixed right-[60px] bottom-[150px] hide">
+            <div class="w-[300px] h-auto p-5 rounded-md shadow-md fixed right-[60px] bottom-[150px] bg-gray-900 hide">
                 <ul>
-                    <li class="text-green-400 p-2 hover:bg-green-400 hover:text-white"><a href="#">Direction 1</a></li>
-                    <li class="text-green-400 p-2 hover:bg-green-400 hover:text-white"><a href="#">Direction 2</a></li>
-                    <li class="text-green-400 p-2 hover:bg-green-400 hover:text-white"><a href="#">Direction 3</a></li>
-                    <li class="text-green-400 p-2 hover:bg-green-400 hover:text-white"><a href="#">Direction 4</a></li>
+                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="#">Connect Rosources</a></li>
+                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="#">Git School</a></li>
+                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="#">GitHub Repository</a></li>
                 </ul>
             </div>
         `;
