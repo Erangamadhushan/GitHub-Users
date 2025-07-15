@@ -6,7 +6,8 @@
     margin-block:2.5em;
     border-radius:.5em;
     margin-inline:auto;
-    box-shadow:0.2em 0.2em 0.5em rgba(0,0,0,0.2),-0.2em 0.2em 0.4em  rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+    //box-shadow:0.2em 0.2em 0.5em rgba(0,0,0,0.2),-0.2em 0.2em 0.4em  rgba(0,0,0,0.2);
 }
 
 .explorerSection {
@@ -19,7 +20,8 @@
     background-color:rgba(0,0,0,0.2);
     bottom:200px;
     right:15px;
-    box-shadow:2px 3px 8px rgba(0,0,0,0.2), -2px 3px 10px rgba(0,0,0,0.2);
+    
+    // box-shadow:2px 3px 8px rgba(0,0,0,0.2), -2px 3px 10px rgba(0,0,0,0.2);
 }
 
 .explorerSectionContainer {

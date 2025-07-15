@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#root");
     let layout = `
-        <div class="grid gap-2 bg-gray-900">
+        <div class="grid gap-2 border border-2">
             <div class="explorerSection"><img src="./assets/icons/add.gif"></div>
             <div class="explorerSectionContainer"></div>
             <div class="flex justify-center gap-5 items-baseline p-5">
@@ -20,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div id="profileDetails" class="w-[90%] max-h-[100vh] md:max-h-[80vh] grid gap-2 mx-auto md:w-[35%]"> </div>
                 <div id="repositoryDetails" class="w-[90%] overflow-y-auto mx-auto md:w-[55%] grid gap-3"> </div>
             </div>
+            <div class="w-[90%] mx-auto md:w-[75%] p-5 text-center grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 text-green-400 id="chartsSection">
+
+            </div>
+
         </div>
     `;
 
@@ -30,9 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let explorerSectionContainerContent = `
             <div class="w-[300px] h-auto p-5 rounded-md shadow-md fixed right-[60px] bottom-[150px] bg-gray-900 hide">
                 <ul>
-                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="#">Connect Rosources</a></li>
-                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="#">Git School</a></li>
-                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="#">GitHub Repository</a></li>
+                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="https://erangamadhushan.github.io/Resource-Bank/">Connect Rosources</a></li>
+                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="https://erangamadhushan.github.io/Git-School/">Git School</a></li>
+                    <li class="text-green-400 p-2 hover:bg-gray-800 hover:text-white"><a href="https://github.com/Erangamadhushan/GitHub-Users">GitHub Repository</a></li>
                 </ul>
             </div>
         `;
@@ -104,16 +108,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="grid gap-2 py-3">
                     <h2 class="text-center text-green-400 text-xl">${userData.name || userData.login}</h2>
-                    <p><a href="${userData.html_url}" target="_blank">@${userData.login}</a></p>
-                    ${userData.bio ? `<p>${userData.bio}</p>` : ''}
-                    ${userData.location ? `<p>📍 ${userData.location}</p>` : ''}
-                    ${userData.email ? `<p>✉️ ${userData.email}</p>` : ''}
-                    ${userData.blog ? `<p>🔗 <a href="${userData.blog}" target="_blank">${userData.blog}</a></p>` : ''}
-                    <p>Public Repository : <span>${userData.public_repos}</span></p>
+                    <p><a href="${userData.html_url}" class="text-green-400" target="_blank">@${userData.login}</a></p>
+                    ${userData.bio ? `<p class="text-green-400">${userData.bio}</p>` : ''}
+                    ${userData.location ? `<p class="text-green-400">📍 ${userData.location}</p>` : ''}
+                    ${userData.email ? `<p class="text-green-400">✉️ ${userData.email}</p>` : ''}
+                    ${userData.blog ? `<p class="text-green-400">🔗 <a href="${userData.blog}" target="_blank">${userData.blog}</a></p>` : ''}
+                    <p class="text-green-400">Public Repository : <span>${userData.public_repos}</span></p>
                     ${
                         userData.public_repos > 0 ? "Active User " : "New User"
                     }
-                    <p>Follower : <span>${userData.followers} </span> Following : <span>${userData.following}</span></p>
+                    <p class="text-green-400">Follower : <span>${userData.followers} </span> Following : <span>${userData.following}</span></p>
                 </div>
             `;
             getUserRepoDetails();
@@ -129,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
             repoDetails.splice(0,5).forEach((repo, index) => {
                 //console.log(repo.stargazers_count);
                 repositoryDetailsContent += `
-                    <div class="w-[95%] mx-auto bg-green-100 p-3 rounded-[.5em] mb-3 animate__animated animate__zoomIn animate__delay-${index * .2}s" >
+                    <div class="w-[95%] mx-auto bg-green-100 p-3 rounded-[.2em] mb-3 animate__animated animate__zoomIn animate__delay-${index * .2}s" >
                         <h2 class="text-green-900 text-center text-xl font-bold">${repo.name}</h2>
                         <p>${repo.description || " No description available"}</p>
                         <p>Forks : <span>${repo.forks}</span>  Stars : <span>${repo.stargazers_count}</span></p>
